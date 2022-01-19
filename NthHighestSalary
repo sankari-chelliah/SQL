@@ -1,6 +1,9 @@
 #Finding the 5th highest salary. --- Will not return Null if 5th value not present
-select min(salary) 
+select salary 
        from (select distinct salary 
                     from hr.employees 
                     order by salary desc 
-                    fetch first 5 rows with ties);
+                    fetch first 5 rows only)
+        order by salary asc
+        fetch first 1 rows only;
+                    
