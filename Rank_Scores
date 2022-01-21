@@ -1,0 +1,6 @@
+select A.score, B.sno as rank
+from scores A,
+(select score, row_number() over (order by score desc) as sno
+from (select distinct score from scores)) B
+where A.score = B.score
+order by score desc;
